@@ -42,8 +42,8 @@ class Spam(Resource):
 class Ham(Resource):
     def get(self, ham_id):
         abort_if_ham_doesnt_exist(ham_id)
-        ham = transformer.transform(spam[ham_id]['content'])
-        return {'content': ham}
+        ham, success = transformer.transform(spam[ham_id]['content'])
+        return {'content': ham, 'success': success}
 
 
 api.add_resource(Spam, '/spam')
