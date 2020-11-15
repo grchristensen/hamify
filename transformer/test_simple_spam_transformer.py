@@ -1,4 +1,4 @@
-from SimpleSpamTransformer import SimpleSpamTransformer
+from simple_spam_transformer import SimpleSpamTransformer
 
 
 def test_transform_should_not_return_empty_string():

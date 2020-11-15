@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import reqparse, abort, Resource, Api
 
-from SimpleSpamTransformer import SimpleSpamTransformer
+from simple_spam_transformer import SimpleSpamTransformer
 
 app = Flask(__name__)
 api = Api(app)
