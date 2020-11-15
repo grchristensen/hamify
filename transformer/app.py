@@ -51,4 +51,4 @@ api.add_resource(Ham, '/ham/<ham_id>')
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
