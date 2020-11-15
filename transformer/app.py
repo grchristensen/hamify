@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import reqparse, abort, Resource, Api
 
-from SimpleSpamTransformer import SimpleSpamTransformer
+from simple_spam_transformer import SimpleSpamTransformer
 
 app = Flask(__name__)
 api = Api(app)
@@ -51,4 +51,4 @@ api.add_resource(Ham, '/ham/<ham_id>')
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
