@@ -7,7 +7,7 @@ nltk.download('wordnet')
 
 class SpamFilter:
     def __init__(self):
-        self._train_data = pd.read_csv('train_data.csv', encoding='latin-1')
+        self._train_data = pd.read_csv('resources/train_data.csv', encoding='latin-1')
 
         self._prob_spam = self._train_data['LABEL'].value_counts()['spam'] / self._train_data.shape[0]
         self._prob_ham = self._train_data['LABEL'].value_counts()['ham'] / self._train_data.shape[0]
@@ -102,7 +102,7 @@ if __name__ == '__main__':
     spam_filter = SpamFilter()
     spam_transformer = SimpleSpamTransformer()
     print("Reading test data...")
-    test_data = pd.read_csv('test_data.csv', encoding='latin-1')
+    test_data = pd.read_csv('resources/test_data.csv', encoding='latin-1')
     print("Finished reading test data!")
 
     successful_transforms = ""
@@ -112,15 +112,15 @@ if __name__ == '__main__':
     for index, row in test_data.iterrows():
         total += 1
         # print("Starting to transform...")
-        message = str(row['SMS'])
-        transformed_spam, success = spam_transformer.transform(message, max_synonyms=5)
+        potential_spam = str(row['SMS'])
+        transformed_spam, success = spam_transformer.transform(potential_spam, max_synonyms=5)
         # print("Done transforming!")
         transformed_prediction, _, _ = spam_filter.filter(transformed_spam)
         if row['LABEL'] == transformed_prediction:
             correct += 1
         elif row['LABEL'] == 'spam':
             if transformed_prediction == 'ham':
-                successful_transforms += message + '\n'
+                successful_transforms += potential_spam + '\n'
                 successful_transforms += transformed_spam + '\n'
 
         if index % 100 == 0:
@@ -128,7 +128,7 @@ if __name__ == '__main__':
 
     print()
 
-    with open('successful_transforms.txt', 'w') as successful_transforms_file:
+    with open('resources/successful_transforms.txt', 'w') as successful_transforms_file:
         successful_transforms_file.write(successful_transforms)
 
     print("Transformed Accuracy: " + str(float(correct / total)))
