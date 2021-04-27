@@ -47,7 +47,7 @@ jobs:
           image: gcr.io/hamify/gchristensen/hamify-api-develop
           service: hamify-api-develop
           project: hamify
-          region: us-west1
+          region: us-central1
           service key: ${{ secrets.GCLOUD_AUTH }}
       -
         name: Image digest
