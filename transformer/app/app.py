@@ -1,8 +1,8 @@
 from flask import Flask
 from flask_restful import reqparse, Resource, abort, Api
-import spam as spm
-import app_resources
-from simple_spam_transformer import SimpleSpamTransformer
+from app import spam as spm
+from app import app_resources
+from app.simple_spam_transformer import SimpleSpamTransformer
 
 app = Flask(__name__)
 api = Api(app)
