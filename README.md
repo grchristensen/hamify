@@ -1,6 +1,10 @@
-# DNASB (Definitely Not A Spam Bot)
+# Hamify
 
-This is the repository for the DNASB service created by Gage Christensen for the 2020 UNR ACM Biggest Little Hackathon.
+This is the repository for the Hamify (formerly known as DNASB) service created by Gage Christensen for the 2020 UNR ACM Biggest Little Hackathon.
+
+# Reproduction
+
+Building and testing can be reproduced simply by cloning the repository and building the docker image from the dockerfile in transformer/. To reproduce deployment, you would need to duplicate this repository and produce your own credentials. Make a github secret for GCLOUD\_AUTH. This should be a base64 encoded key for a Google Cloud service account. You will also need to have a cloud run service set up prior to deploying the application. You can use one of the demo containers to start with. Once you have your google cloud services set up, edit .github/workflows/ci.yml so that the container is pushed to the right location and deployed to your cloud run service.
 
 ## Tools
 
