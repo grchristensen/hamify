@@ -2,3 +2,5 @@ flask
 flask-restful
 pandas
 nltk
+pytest
+pytest-cov
