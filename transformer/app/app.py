@@ -32,7 +32,7 @@ class Spam(Resource):
     @staticmethod
     def abort_if_no_content(message):
         if message is None:
-            abort(400, message="Content field is not specified")
+            abort(400, message="You need to give message content to be transformed. Pass a 'content' field with your message.")
 
 
 @api.resource('/ham/<ham_id>', resource_class_args=(app_resources.spam, app_resources.transformer))
